@@ -13,8 +13,9 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <spring.version>5.2.0.RELEASE</spring.version>
-        <hibernate.version>5.2.11.Final</hibernate.version>
+        <spring.version>5.3.17</spring.version>
+        <hibernate.version>5.6.7.Final</hibernate.version>
+        <hibernate.entity.version>5.6.7.Final</hibernate.entity.version>
         <hibernate.validator>5.4.1.Final</hibernate.validator>
         <c3p0.version>0.9.5.2</c3p0.version>
         <jstl.version>1.2.1</jstl.version>
@@ -22,12 +23,20 @@
         <servlets.version>3.1.0</servlets.version>
         <jsp.version>2.3.1</jsp.version>
         <hsqldb.version>1.8.0.10</hsqldb.version>
+        <mysql.version>8.0.28</mysql.version>
     </properties>
     <dependencies>
         <!-- Spring MVC Dependency -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring WEB Dependency -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
@@ -45,11 +54,30 @@
             <version>${hibernate.version}</version>
         </dependency>
 
+        <!-- Hibernate Core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.entity.version}</version>
+        </dependency>
+
         <!-- Hibernate-C3P0 Integration -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-c3p0</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.32</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>3.4.2.Final</version>
         </dependency>
 
         <!-- c3p0 -->
@@ -100,6 +128,24 @@
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
         </dependency>
     </dependencies>
 

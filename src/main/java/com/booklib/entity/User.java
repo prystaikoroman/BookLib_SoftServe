@@ -1,55 +1,80 @@
 package com.booklib.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.util.Date;
+import java.util.Set;
+
 @Entity
-@Table(name = "TBL_USERS")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name ="user")
 public class User {
 
     @Id
-    @GeneratedValue
-    @Column(name = "USER_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "USER_NAME")
+    @Column(nullable = false, length = 50)
     @Size(max = 20, min = 3, message = "{user.name.invalid}")
     @NotEmpty(message="Please Enter your name")
     private String name;
 
-    @Column(name = "USER_EMAIL", unique = true)
+    @Column(nullable = false, length = 50)
+    @Size(max = 20, min = 3, message = "{user.name.invalid}")
+    @NotEmpty(message="Please Enter your name")
+    private String surname;
+
+    @Column(unique = true)
     @Email(message = "{user.email.invalid}")
     @NotEmpty(message="Please Enter your email")
     private String email;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(nullable = false, length = 50)
+    private String password;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(nullable = false)
+    @NotEmpty(message="Please Enter Date Registration")
+    private Date date_registr;
 
-    public String getName() {
-        return name;
-    }
+    @Column(nullable = false)
+    @NotEmpty(message="Please Enter Date of Birth")
+    private Date birthday;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Set<UserRole> roles;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 }
